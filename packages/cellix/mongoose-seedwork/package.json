@@ -1,0 +1,48 @@
+{
+	"name": "@cellix/mongoose-seedwork",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"format": "biome format --write",
+		"format:check": "biome format .",
+		"prebuild": "pnpm run lint",
+		"build": "tsgo --build",
+		"watch": "tsgo --watch",
+		"test": "vitest run --silent --reporter=dot",
+		"test:coverage": "vitest run --coverage --silent --reporter=dot",
+		"test:integration": "vitest run integration.test.ts --silent --reporter=dot",
+		"test:unit": "vitest run --exclude tests/integration/**/*.test.ts --silent --reporter=dot",
+		"test:watch": "vitest",
+		"lint": "biome lint",
+		"clean": "rimraf dist"
+	},
+	"dependencies": {
+		"@cellix/domain-seedwork": "workspace:*",
+		"@cellix/event-bus-seedwork-node": "workspace:*"
+	},
+	"peerDependencies": {
+		"mongoose": "^8.0.0",
+		"mongodb": "^6.0.0"
+	},
+	"devDependencies": {
+		"@cellix/config-typescript": "workspace:*",
+		"@cellix/config-vitest": "workspace:*",
+		"@vitest/coverage-istanbul": "catalog:",
+		"mongoose": "catalog:",
+		"mongodb": "catalog:",
+		"mongodb-memory-server": "^10.1.4",
+		"rimraf": "catalog:",
+		"typescript": "catalog:",
+		"vitest": "catalog:"
+	}
+}

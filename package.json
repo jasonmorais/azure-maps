@@ -1,0 +1,19 @@
+{
+	"name": "azure-maps-geolocation-sample",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"packageManager": "pnpm@11.9.0",
+	"engines": {
+		"node": "22.22.2"
+	},
+	"scripts": {
+		"build": "pnpm --filter @ocom/service-geolocation-azure-maps exec tsgo --build && pnpm --filter @apps/api build",
+		"dev": "pnpm run build && pnpm --filter @apps/api start"
+	},
+	"devDependencies": {
+		"@azure/identity": "catalog:",
+		"@types/node": "catalog:",
+		"@typescript/native-preview": "catalog:"
+	}
+}

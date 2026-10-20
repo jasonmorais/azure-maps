@@ -1,0 +1,55 @@
+packages:
+  - "apps/*"
+  - "packages/azm/*"
+  - "packages/cellix/*"
+
+engineStrict: true
+verifyDepsBeforeRun: false
+
+catalog:
+  '@apollo/server': 5.5.0
+  '@azure/identity': ^4.13.1
+  '@azure/functions': 4.11.0
+  '@azure/storage-blob': 12.31.0
+  '@azure/storage-queue': 12.31.0
+  '@cucumber/cucumber': 12.8.1
+  '@cucumber/messages': 32.3.1
+  '@cucumber/node': 0.4.0
+  '@cucumber/pretty-formatter': 1.0.1
+  '@serenity-js/assertions': 3.43.0
+  '@serenity-js/console-reporter': 3.43.0
+  '@serenity-js/core': 3.43.0
+  '@serenity-js/cucumber': 3.43.0
+  '@serenity-js/serenity-bdd': 3.43.0
+  '@types/node': ^22.19.5
+  '@vitest/browser': 4.1.11
+  '@vitest/browser-playwright': 4.1.11
+  '@typescript/native-preview': 7.0.0-dev.20260428.1
+  '@vitest/coverage-istanbul': 4.1.11
+  antd: 6.3.5
+  archunit: ^2.1.63
+  esbuild: 0.28.1
+  axios: ^1.20.0
+  graphql: ^16.10.0
+  jsdom: ^26.1.0
+  mongodb: 6.18.0
+  mongodb-memory-server: ^10.1.4
+  mongoose: 8.24.1
+  playwright: 1.59.0
+  react-router-dom: 7.18.0
+  react: ^19.2.7
+  react-dom: ^19.2.7
+  '@ant-design/icons': ^6.0.2
+  rimraf: 6.0.1
+  storybook: ^10.4.2
+  '@storybook/addon-a11y': ^10.4.2
+  '@storybook/addon-docs': ^10.4.2
+  '@storybook/addon-onboarding': ^10.4.2
+  '@storybook/addon-vitest': ^10.4.2
+  '@storybook/react-vite': ^10.4.2
+  '@storybook/react': ^10.4.2
+  tsx: ^4.21.0
+  typescript: 6.0.3
+  vite: 8.0.16
+  vitest: 4.1.11
+  vite-plugin-node-polyfills: ^0.28.0

@@ -1,0 +1,15 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+        "inputs": [
+            "base.jsonc",
+            "tsconfig.node.json"
+        ],
+        "outputs": [
+            "base.jsonc",
+            "tsconfig.node.json"
+        ]
+    }
+  }
+}

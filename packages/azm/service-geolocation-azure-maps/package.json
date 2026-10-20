@@ -1,0 +1,41 @@
+{
+	"name": "@ocom/service-geolocation-azure-maps",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"format": "biome format --write",
+		"format:check": "biome format .",
+		"prebuild": "pnpm run lint",
+		"build": "tsgo --build",
+		"watch": "tsgo --watch",
+		"test": "vitest run --silent --reporter=dot",
+		"test:coverage": "vitest run --coverage --silent --reporter=dot",
+		"test:watch": "vitest",
+		"lint": "biome lint",
+		"clean": "rimraf dist"
+	},
+	"dependencies": {
+		"@azure/identity": "^4.13.1",
+		"@cellix/service-geolocation-base": "workspace:*",
+		"axios": "catalog:"
+	},
+	"devDependencies": {
+		"@types/node": "catalog:",
+		"@cellix/config-typescript": "workspace:*",
+		"@cellix/config-vitest": "workspace:*",
+		"@vitest/coverage-istanbul": "catalog:",
+		"rimraf": "catalog:",
+		"typescript": "catalog:",
+		"vitest": "catalog:"
+	}
+}

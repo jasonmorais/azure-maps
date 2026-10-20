@@ -1,0 +1,8 @@
+{
+	"IsEncrypted": false,
+	"Values": {
+		"AzureWebJobsStorage": "UseDevelopmentStorage=true",
+		"FUNCTIONS_WORKER_RUNTIME": "node",
+		"AZURE_MAPS_CLIENT_ID": "<Azure Maps client ID>"
+	}
+}

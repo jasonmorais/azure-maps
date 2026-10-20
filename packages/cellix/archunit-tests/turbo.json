@@ -1,0 +1,9 @@
+{
+	"extends": ["//"],
+	"tasks": {
+		"test:coverage": {
+			"dependsOn": ["@cellix/config-vitest#build"],
+			"outputs": []
+		}
+	}
+}

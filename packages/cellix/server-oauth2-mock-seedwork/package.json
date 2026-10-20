@@ -1,0 +1,35 @@
+{
+	"name": "@cellix/server-oauth2-mock-seedwork",
+	"version": "1.0.0",
+	"author": "",
+	"description": "Reusable OAuth2/OIDC mock server seedwork for local development and testing",
+	"type": "module",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"prebuild": "pnpm run lint",
+		"build": "tsgo --build",
+		"clean": "rimraf dist tsconfig.tsbuildinfo && tsgo --build --clean",
+		"lint": "biome lint",
+		"format": "biome format --write",
+		"format:check": "biome format .",
+		"test": "vitest run --reporter=dot",
+		"test:coverage": "vitest run --coverage --reporter=dot",
+		"test:watch": "vitest"
+	},
+	"dependencies": {
+		"express": "^4.22.2",
+		"express-rate-limit": "^8.5.1",
+		"jose": "^5.9.6",
+		"dotenv": "^16.4.5"
+	},
+	"devDependencies": {
+		"@cellix/config-typescript": "workspace:*",
+		"@cellix/config-vitest": "workspace:*",
+		"@types/express": "^5.0.3",
+		"@vitest/coverage-istanbul": "catalog:",
+		"rimraf": "catalog:",
+		"typescript": "catalog:",
+		"vitest": "catalog:"
+	}
+}

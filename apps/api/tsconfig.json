@@ -1,0 +1,11 @@
+{
+	"extends": "@cellix/config-typescript/node",
+	"compilerOptions": {
+		"lib": ["ES2023", "DOM"],
+		"skipLibCheck": true,
+		"outDir": "dist",
+		"rootDir": "src",
+		"tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
+	},
+	"include": ["src/**/*.ts"]
+}

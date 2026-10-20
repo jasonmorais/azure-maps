@@ -1,0 +1,23 @@
+{
+	"name": "@apps/api",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "tsgo --build",
+		"watch": "tsgo --watch",
+		"start": "func start"
+	},
+	"dependencies": {
+		"@azure/functions": "catalog:",
+		"@cellix/api-core": "workspace:*",
+		"@ocom/service-geolocation-azure-maps": "workspace:*",
+		"graphql": "catalog:"
+	},
+	"devDependencies": {
+		"@cellix/config-typescript": "workspace:*",
+		"@types/node": "catalog:",
+		"@typescript/native-preview": "catalog:"
+	}
+}

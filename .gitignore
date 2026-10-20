@@ -1,0 +1,14 @@
+node_modules/
+**/node_modules/
+.turbo/
+**/.turbo/
+dist/
+**/dist/
+**/coverage/
+**/build/
+**/*.tsbuildinfo
+**/.vite/
+**/.vite-temp/
+local.settings.json
+**/local.settings.json
+.azurite/
