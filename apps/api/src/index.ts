@@ -69,10 +69,8 @@ function jsonResponse(body: unknown, status = 200): HttpResponseInit {
 	};
 }
 
-const clientId = process.env['AZURE_MAPS_CLIENT_ID'] ?? '';
-
 void Cellix.initializeInfrastructureServices<ApiContext, ApiContext>((serviceRegistry) => {
-	serviceRegistry.registerInfrastructureService(new ServiceGeolocationAzureMaps({ clientId }));
+	serviceRegistry.registerInfrastructureService(new ServiceGeolocationAzureMaps());
 })
 	.setContext((serviceRegistry) => ({
 		geolocationService: serviceRegistry.getInfrastructureService<ServiceGeolocationAzureMaps>(ServiceGeolocationAzureMaps),

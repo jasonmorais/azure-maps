@@ -1,6 +1,8 @@
 import axios, { type AxiosInstance } from 'axios';
 import { DefaultAzureCredential } from '@azure/identity';
 import { isIP } from 'node:net';
+import { fileURLToPath } from 'node:url';
+import dotenv from 'dotenv';
 import type {
 	GeolocationInfrastructureService,
 	GeolocationLookupResult,
@@ -17,7 +19,7 @@ export interface AzureMapsTokenCredential {
 /** Configuration for the Azure Maps IP geolocation API. */
 export interface AzureMapsOptions {
 	/** The unique client ID of the Azure Maps account, not an Entra application ID. */
-	readonly clientId: string;
+	readonly clientId?: string;
 	/** Request timeout in milliseconds. Defaults to 3000. */
 	readonly timeoutMs?: number;
 }
@@ -29,6 +31,7 @@ interface IpToLocationResponse {
 }
 
 const tokenScope = 'https://atlas.microsoft.com/.default';
+const environmentFilePath = fileURLToPath(new URL('../.env', import.meta.url));
 
 function mapResponse(body: unknown): GeolocationLookupResult | null {
 	if (body === null || typeof body !== 'object' || Array.isArray(body)) {
@@ -53,7 +56,8 @@ function mapResponse(body: unknown): GeolocationLookupResult | null {
  * Azure Maps returns an ISO country code; this adapter exposes that code directly.
  */
 export class ServiceGeolocationAzureMaps implements GeolocationInfrastructureService {
-	private readonly clientId: string;
+	private readonly clientIdOverride: string | undefined;
+	private clientId = '';
 	private readonly timeoutMs: number;
 	private readonly credential: AzureMapsTokenCredential;
 	private readonly httpClient: AxiosInstance;
@@ -61,11 +65,11 @@ export class ServiceGeolocationAzureMaps implements GeolocationInfrastructureSer
 
 	/** Creates the adapter with an Azure Maps account client ID and optional test seams. */
 	public constructor(
-		options: AzureMapsOptions,
+		options: AzureMapsOptions = {},
 		httpClient: AxiosInstance | undefined = undefined,
 		credential: AzureMapsTokenCredential = new DefaultAzureCredential(),
 	) {
-		this.clientId = options.clientId.trim();
+		this.clientIdOverride = options.clientId?.trim();
 		this.timeoutMs = options.timeoutMs ?? 3000;
 		this.httpClient = httpClient ?? axios.create({ timeout: this.timeoutMs });
 		this.credential = credential;
@@ -73,6 +77,8 @@ export class ServiceGeolocationAzureMaps implements GeolocationInfrastructureSer
 
 	/** Validates configuration and enables lookups. */
 	public startUp(): Promise<GeolocationService> {
+		dotenv.config({ path: environmentFilePath });
+		this.clientId = this.clientIdOverride ?? (process.env['AZURE_MAPS_ACCOUNT_CLIENT_ID'] ?? process.env['AZURE_MAPS_CLIENT_ID'] ?? '').trim();
 		if (!this.clientId) {
 			return Promise.reject(new Error('Azure Maps account client ID is required'));
 		}

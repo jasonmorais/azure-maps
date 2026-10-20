@@ -27,7 +27,8 @@
 	"dependencies": {
 		"@azure/identity": "^4.13.1",
 		"@cellix/service-geolocation-base": "workspace:*",
-		"axios": "catalog:"
+		"axios": "catalog:",
+		"dotenv": "^16.4.5"
 	},
 	"devDependencies": {
 		"@types/node": "catalog:",

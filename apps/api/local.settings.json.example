@@ -4,6 +4,5 @@
 		"AzureWebJobsStorage": "UseDevelopmentStorage=true",
 		"FUNCTIONS_WORKER_RUNTIME": "node",
 		"NODE_ENV": "development",
-		"AZURE_MAPS_CLIENT_ID": "<Azure Maps client ID>"
 	}
 }
