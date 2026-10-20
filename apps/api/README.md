@@ -19,7 +19,7 @@ query {
 3. Run `az login` with an identity assigned **Azure Maps Data Reader**, start Azurite, then run `pnpm run dev`.
 4. POST `{"query":"{ health { status ip countryCode } }"}` to `http://localhost:7071/api/graphql` with a Functions key.
 
-`DefaultAzureCredential` uses Azure CLI locally and managed identity in Azure. No valid forwarded IP means `ip` and `countryCode` are `null`; geolocation is approximate.
+With `NODE_ENV=development`, lookups use the fixed test IP `8.8.8.8`; production uses the validated `x-forwarded-for` address. `DefaultAzureCredential` uses Azure CLI locally and managed identity in Azure; geolocation is approximate.
 
 ## Azure
 

@@ -31,7 +31,14 @@ const schema = buildSchema(`
 	}
 `);
 
+const isDevelopment = process.env['NODE_ENV'] === 'development';
+const developmentIp = '8.8.8.8';
+
 function getClientIp(request: HttpRequest): string | null {
+	if (isDevelopment) {
+		return isIP(developmentIp) !== 0 ? developmentIp : null;
+	}
+
 	const forwardedFor = request.headers.get('x-forwarded-for');
 	const candidate = forwardedFor?.split(',')[0]?.trim();
 	return candidate && isIP(candidate) !== 0 ? candidate : null;
